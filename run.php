@@ -108,7 +108,9 @@ function xmasReward($id_reward){
             
         $response = json_decode($response, true);
 
-        echo "[+] " . $response['voucher'] . " | " . $reward . "\n";
+        if ($response['resultCode']) {
+            echo "[+] " . $response['voucher'] . " | " . $reward . "\n";
+        }
     }
 }
 
@@ -135,7 +137,7 @@ if(loginPointBlank($username, $password))
     }
 
     unlink('cookie.txt');
-    
+
 } else {
     echo "[-] Please login first ";
 }
